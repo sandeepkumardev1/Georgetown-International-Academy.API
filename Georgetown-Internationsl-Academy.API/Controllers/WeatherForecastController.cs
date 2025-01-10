@@ -1,9 +1,15 @@
+using Asp.Versioning;
+using Georgetown_Internationsl_Academy.API;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
-namespace Georgetown_Internationsl_Academy.API.Controllers
+namespace Georgetown_International_Academy.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [ApiVersion(1)]
+    [Route("/api/v{v:apiVersion}/[controller]")]
+    [EnableRateLimiting("FixedWindowPolicy")]
+
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
